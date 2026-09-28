@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10.0" styleClass="root-pane"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.trafficflowx.controller.MainController">
+
+    <Label styleClass="title-label" text="TrafficFlowX" />
+    <Label styleClass="subtitle-label" text="Intelligent Traffic Intersection Simulator" />
+
+    <Region prefHeight="28.0" />
+
+    <Button fx:id="startButton" minWidth="240.0" onAction="#onStartClicked"
+            styleClass="primary-button" text="Start Simulation" />
+    <Button minWidth="240.0" onAction="#onAboutClicked"
+            styleClass="secondary-button" text="About" />
+    <Button minWidth="240.0" onAction="#onExitClicked"
+            styleClass="danger-button" text="Exit" />
+
+    <Region prefHeight="20.0" />
+    <Label styleClass="hint-label" text="Advanced Programming Laboratory — Java · JavaFX · Multithreading" />
+</VBox>

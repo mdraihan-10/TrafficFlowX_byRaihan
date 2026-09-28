@@ -1,0 +1,260 @@
+/* =========================================================
+   TrafficFlowX — Dark Theme
+   ========================================================= */
+
+.root-pane {
+    -fx-background-color: #12161f;
+    -fx-padding: 0;
+}
+
+VBox.root-pane {
+    -fx-padding: 36;
+}
+
+/* ===== Typography ===== */
+.title-label {
+    -fx-font-size: 46px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(46,139,87,0.45), 18, 0.3, 0, 0);
+}
+
+.subtitle-label {
+    -fx-font-size: 17px;
+    -fx-text-fill: #8a97ab;
+}
+
+.screen-title {
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f4f6f9;
+}
+
+.section-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f0c674;
+    -fx-padding: 6 0 0 0;
+}
+
+.about-text, .hint-label, .stat-name {
+    -fx-text-fill: #a7b1c2;
+    -fx-font-size: 13px;
+}
+
+.stat-value {
+    -fx-text-fill: #eef2f7;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+/* ===== Buttons ===== */
+.primary-button, .secondary-button, .danger-button {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 9 18;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 4, 0, 0, 1);
+}
+
+.primary-button   { -fx-background-color: linear-gradient(to bottom, #34a06a, #2e8b57); }
+.secondary-button { -fx-background-color: linear-gradient(to bottom, #444f63, #3a4556); }
+.danger-button    { -fx-background-color: linear-gradient(to bottom, #c9504f, #b04040); }
+
+.primary-button:hover   { -fx-background-color: linear-gradient(to bottom, #3cb379, #34a06a); }
+.secondary-button:hover { -fx-background-color: linear-gradient(to bottom, #525e75, #444f63); }
+.danger-button:hover    { -fx-background-color: linear-gradient(to bottom, #d66261, #c9504f); }
+
+.primary-button:pressed, .secondary-button:pressed, .danger-button:pressed {
+    -fx-effect: none;
+    -fx-translate-y: 1;
+}
+
+.primary-button:disabled, .secondary-button:disabled, .danger-button:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+/* ===== ComboBox ===== */
+.combo-box {
+    -fx-background-color: #232b38;
+    -fx-background-radius: 5;
+    -fx-border-color: #3a4556;
+    -fx-border-radius: 5;
+    -fx-mark-color: #c9d1dc;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #e6ecf3;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #232b38;
+    -fx-border-color: #3a4556;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #2e8b57;
+    -fx-text-fill: white;
+}
+
+/* ===== CheckBox ===== */
+.check-box {
+    -fx-text-fill: #c9d1dc;
+    -fx-font-size: 13px;
+}
+
+.check-box .box {
+    -fx-background-color: #232b38;
+    -fx-border-color: #4a566b;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #2e8b57;
+}
+
+/* ===== Simulation screen layout ===== */
+.top-bar {
+    -fx-background-color: #0d1119;
+    -fx-padding: 12 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 6, 0, 0, 2);
+}
+
+.intersection-pane {
+    -fx-background-color: linear-gradient(to bottom, #253022, #202b1f);
+    -fx-background-radius: 8;
+    -fx-border-color: #37452f;
+    -fx-border-radius: 8;
+}
+
+.placeholder-label {
+    -fx-text-fill: #aab4c3;
+    -fx-font-size: 14px;
+}
+
+.side-scroll {
+    -fx-background-color: transparent;
+    -fx-background: #12161f;
+}
+
+.side-panel {
+    -fx-padding: 14;
+    -fx-background-color: #171d29;
+    -fx-background-radius: 10;
+    -fx-border-color: #262f3f;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);
+}
+
+.emergency-banner {
+    -fx-background-color: #c0392b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 7 16;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(192,57,43,0.6), 12, 0.4, 0, 0);
+}
+
+.status-bar {
+    -fx-background-color: #0d1119;
+    -fx-padding: 9 18;
+}
+
+.status-label {
+    -fx-text-fill: #f0c674;
+    -fx-font-size: 13px;
+}
+
+/* ===== Charts ===== */
+.chart-title, .axis-label {
+    -fx-text-fill: #c9d1dc;
+}
+
+.axis {
+    -fx-tick-label-fill: #c9d1dc;
+}
+
+.chart-bar {
+    -fx-bar-fill: #4fa3e0;
+}
+
+#vehiclesByDirectionChart .chart-bar {
+    -fx-bar-fill: #4fa3e0;
+}
+
+#waitingTimeChart .chart-bar {
+    -fx-bar-fill: #f0c674;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: #2a3446;
+}
+
+/* ===== ListView ===== */
+.list-view {
+    -fx-background-color: #171d29;
+    -fx-border-color: #262f3f;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d6dee8;
+    -fx-padding: 5 10;
+}
+
+.list-cell:odd {
+    -fx-background-color: #1c2331;
+}
+
+.list-cell:selected {
+    -fx-background-color: #2e8b57;
+    -fx-text-fill: white;
+}
+
+/* ===== TableView (History screen) ===== */
+.table-view {
+    -fx-background-color: #171d29;
+    -fx-control-inner-background: #171d29;
+    -fx-table-cell-border-color: #262f3f;
+    -fx-background-radius: 8;
+}
+
+.table-view .column-header-background,
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: #0d1119;
+    -fx-border-color: #262f3f;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #c9d1dc;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #171d29;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #1c2331;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #2e8b57;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #e6ecf3;
+    -fx-alignment: CENTER-LEFT;
+}

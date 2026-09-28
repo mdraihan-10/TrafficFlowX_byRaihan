@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane styleClass="root-pane" xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.trafficflowx.controller.StatisticsController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
+            <Button fx:id="backButton" onAction="#onBackClicked"
+                    styleClass="secondary-button" text="← Back" />
+            <Label styleClass="screen-title" text="Statistics" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="historyButton" onAction="#onHistoryClicked"
+                    styleClass="secondary-button" text="View History" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+
+            <Label fx:id="summaryLabel" styleClass="hint-label" text="" wrapText="true" />
+
+            <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+                <BarChart fx:id="vehiclesByDirectionChart" id="vehiclesByDirectionChart" animated="false"
+                          title="Vehicles by Direction" HBox.hgrow="ALWAYS">
+                    <xAxis><CategoryAxis label="Direction" /></xAxis>
+                    <yAxis><NumberAxis label="Vehicles" /></yAxis>
+                </BarChart>
+
+                <BarChart fx:id="waitingTimeChart" id="waitingTimeChart" animated="false"
+                          title="Average Waiting Time by Direction" HBox.hgrow="ALWAYS">
+                    <xAxis><CategoryAxis label="Direction" /></xAxis>
+                    <yAxis><NumberAxis label="Seconds" /></yAxis>
+                </BarChart>
+            </HBox>
+
+            <HBox prefHeight="170.0" spacing="15.0">
+                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="section-title" text="Emergency Events" />
+                    <ListView fx:id="emergencyEventsList" VBox.vgrow="ALWAYS" />
+                </VBox>
+                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="section-title" text="Accident History" />
+                    <ListView fx:id="accidentHistoryList" VBox.vgrow="ALWAYS" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="12.0" styleClass="root-pane"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.trafficflowx.controller.AboutController">
+
+    <Label styleClass="title-label" text="About TrafficFlowX" />
+
+    <Label styleClass="section-title" text="Project Objective" />
+    <Label styleClass="about-text" wrapText="true" maxWidth="700.0"
+           text="A desktop simulation of a four-way intersection that demonstrates Java multithreading, synchronization and adaptive traffic control using JavaFX." />
+
+    <Label styleClass="section-title" text="Technologies" />
+    <Label styleClass="about-text" wrapText="true" maxWidth="700.0"
+           text="Java 25, JavaFX, FXML, CSS, ExecutorService, synchronized / wait / notifyAll, Maven" />
+
+    <Label styleClass="section-title" text="Team Members" />
+    <Label styleClass="about-text" text="MD Raihan (add other member names here)" />
+
+    <Label styleClass="section-title" text="Course" />
+    <Label styleClass="about-text" text="Advanced Programming Laboratory" />
+
+    <Button onAction="#onBackClicked" fx:id="backButton"
+            styleClass="secondary-button" text="← Back" />
+</VBox>

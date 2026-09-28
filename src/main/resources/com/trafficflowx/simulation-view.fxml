@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckBox?>
+
+<BorderPane styleClass="root-pane" xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.trafficflowx.controller.SimulationController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
+            <Button fx:id="backButton" onAction="#onBackClicked"
+                    styleClass="secondary-button" text="← Back" />
+            <Label styleClass="screen-title" text="Simulation" />
+            <Label styleClass="screen-title" text="Simulation" />
+            <Label fx:id="signalLabel" styleClass="hint-label" text="Signals: off" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="emergencyBanner" styleClass="emergency-banner"
+                   text="🚨 EMERGENCY VEHICLE APPROACHING" visible="false" managed="false" />
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="intersectionPane" styleClass="intersection-pane"
+                   BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+        </StackPane>
+    </center>
+
+    <right>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="330.0"
+                    styleClass="side-scroll" BorderPane.alignment="CENTER">
+            <VBox spacing="14.0" styleClass="side-panel">
+
+                <Label styleClass="section-title" text="Simulation" />
+                <FlowPane hgap="8.0" vgap="8.0">
+                    <Button onAction="#onStartClicked" styleClass="primary-button" text="Start Simulation" />
+                    <Button onAction="#onPauseClicked" styleClass="secondary-button" text="Pause" />
+                    <Button onAction="#onResumeClicked" styleClass="secondary-button" text="Resume" />
+                    <Button onAction="#onResetClicked" styleClass="danger-button" text="Reset" />
+                </FlowPane>
+
+                <Label styleClass="section-title" text="Traffic Density" />
+
+                <ComboBox fx:id="densityBox" maxWidth="Infinity" onAction="#onDensityChanged" />
+                <Label styleClass="section-title" text="Signal Control" />
+                <CheckBox fx:id="adaptiveCheck" onAction="#onAdaptiveChanged"
+                          text="Adaptive green time" />
+
+                <Label styleClass="section-title" text="Synchronization Demo" />
+                <CheckBox fx:id="ignoreSignalsCheck" onAction="#onIgnoreSignalsChanged"
+                          text="Ignore traffic lights (demo)" />
+                <CheckBox fx:id="unsafeModeCheck" onAction="#onSafetyModeChanged"
+                          text="Unsafe Mode (no synchronization)" />
+
+                <Label styleClass="section-title" text="Events" />
+                <Label styleClass="hint-label" text="Target road for accident / road block:" />
+                <ComboBox fx:id="directionBox" maxWidth="Infinity" />
+                <FlowPane hgap="8.0" vgap="8.0">
+                    <Button onAction="#onEmergencyClicked" styleClass="secondary-button" text="Emergency Vehicle" />
+                    <Button onAction="#onAccidentClicked" styleClass="secondary-button" text="Simulate Accident" />
+                    <Button onAction="#onClearAccidentClicked" styleClass="secondary-button" text="Clear Accident" />
+                    <Button onAction="#onRoadBlockClicked" styleClass="secondary-button" text="Road Block" />
+                    <Button onAction="#onClearRoadBlockClicked" styleClass="secondary-button" text="Clear Road Block" />
+                </FlowPane>
+
+                <Label styleClass="section-title" text="Live Statistics" />
+                <GridPane hgap="10.0" vgap="6.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+                    </columnConstraints>
+
+                    <Label styleClass="stat-name" text="Total Vehicles" GridPane.rowIndex="0" />
+                    <Label fx:id="totalVehiclesLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label styleClass="stat-name" text="Passed Vehicles" GridPane.rowIndex="1" />
+                    <Label fx:id="passedVehiclesLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label styleClass="stat-name" text="Waiting Vehicles" GridPane.rowIndex="2" />
+                    <Label fx:id="waitingVehiclesLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label styleClass="stat-name" text="Emergency Vehicles" GridPane.rowIndex="3" />
+                    <Label fx:id="emergencyVehiclesLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <Label styleClass="stat-name" text="Average Waiting Time" GridPane.rowIndex="4" />
+                    <Label fx:id="avgWaitLabel" styleClass="stat-value" text="0.0 sec" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label styleClass="stat-name" text="Maximum Waiting Time" GridPane.rowIndex="5" />
+                    <Label fx:id="maxWaitLabel" styleClass="stat-value" text="0.0 sec" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                    <Label styleClass="stat-name" text="Accidents" GridPane.rowIndex="6" />
+                    <Label fx:id="accidentsLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                    <Label styleClass="stat-name" text="Road Blocks" GridPane.rowIndex="7" />
+                    <Label fx:id="roadBlocksLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+                    <Label styleClass="stat-name" text="Traffic Density" GridPane.rowIndex="8" />
+                    <Label fx:id="densityLabel" styleClass="stat-value" text="-" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+                    <Label styleClass="stat-name" text="Junction Conflicts" GridPane.rowIndex="9" />
+                    <Label fx:id="conflictsLabel" styleClass="stat-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+                    <Label styleClass="stat-name" text="Waiting N / S / E / W" GridPane.rowIndex="10" />
+                    <Label fx:id="queuesLabel" styleClass="stat-value" text="0 / 0 / 0 / 0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
+                    <Label styleClass="stat-name" text="Last green N/S / E/W" GridPane.rowIndex="11" />
+                    <Label fx:id="greenTimesLabel" styleClass="stat-value" text="10 s / 10 s" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                </GridPane>
+
+                <Button maxWidth="Infinity" onAction="#onStatisticsClicked"
+                        styleClass="primary-button" text="Statistics" />
+            </VBox>
+        </ScrollPane>
+    </right>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" styleClass="status-bar">
+            <Label fx:id="statusLabel" styleClass="status-label" text="" />
+        </HBox>
+    </bottom>
+</BorderPane>
